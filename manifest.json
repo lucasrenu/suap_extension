@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Suap Rename",
+    "description": "Renomeador de turmas para o Suap.",
+    "version": "1.0",
+    "author": "Lucas Renu",
+    "permissions": ["activeTab", "scripting", "storage"],
+    "content_scripts":[{
+        "js":["scripts/script.js", "scripts/load.js"],
+        "matches": [
+            "http://localhost:5500/*",
+            "https://suap.ifpi.edu.br/*"
+        ]
+    }],
+    "action": {
+        "default_popup": "index.html"
+    }
+}

@@ -1,0 +1,58 @@
+html {
+    min-width: 10em;
+}
+
+.input{
+    width: 50%;
+    /* display: flex;
+    flex-wrap: wrap;*/
+    padding: 10px; 
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #428d70;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #499a7b;
+}
+
+.gg-check-o {
+    box-sizing: border-box;
+    position: relative;
+    display: none;
+    transform: scale(var(--ggs,1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid;
+    border-radius: 100px;
+    border-color: #3f3;
+}
+   
+   .gg-check-o::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    left: 3px;
+    top: -1px;
+    width: 6px;
+    height: 10px;
+    border-color: currentColor;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+    border-color: #3f3;
+   } 
