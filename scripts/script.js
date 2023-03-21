@@ -51,7 +51,7 @@ const find = async () => {
     })
 }
 
-function changeContent(page_class, class_name) {
+function changeContent(class_name) {
     let titles = document.getElementsByClassName("title")
     for(let i = 0; i < titles.length; i++){
         console.log(class_name[i]);
@@ -60,27 +60,28 @@ function changeContent(page_class, class_name) {
 }
 
 
-/*
-    NOTE: page_class: numeração da turma
-    NOTE: class_name: nome da turma atualizado
-    
-*/
-const change = async (class_name, page_class) => {
-    console.log(class_name);
+// NOTE: class_name: nome da turma atualizado    
+
+const change = async (class_name) => {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
         func: changeContent,
-        args: [page_class, class_name]
+        args: [class_name]
     })
 }
 
+/**
+ * Método que pega dados do formulário. 
+ * @returns list ["new class name", "old class name"]
+ */
 const getFormData = () => {
     let formulario = new FormData(form)
     let names = []
     turmas.forEach(x => {
         names.push([formulario.get('i' + x), x])
     })
+
     return names
 }
 
@@ -88,8 +89,8 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
 
     if (clicked) {
-        let [anterior, atual] = getFormData()
-        change(anterior, atual)
+        let lista = getFormData()
+        change(lista)
         document.getElementsByClassName('gg-check-o')[0].style.display = "block"
     } else {
         find()
