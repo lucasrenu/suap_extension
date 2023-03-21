@@ -54,8 +54,7 @@ const find = async () => {
 function changeContent(class_name) {
     let titles = document.getElementsByClassName("title")
     for(let i = 0; i < titles.length; i++){
-        console.log(class_name[i]);
-        titles[i].firstElementChild.text = class_name[i]
+        titles[i].firstElementChild.text = class_name[i][0] + " - " + titles[i].firstElementChild.text
     }
 }
 
